@@ -263,10 +263,25 @@ function onSliderChange () {
  * The animation loop!
  */
  function animate() {
-  requestAnimationFrame( animate )
-  controls.update()
-  renderer.render(scene, camera)
+  scene.traverse(function(child){
+    if (child.isMesh){
+      child.rotation.y +=0.0006
+      child.rotation.z +=0.0006
+      child.rotation.x +=0.0006
+    }
+    //else{(child.ispoint)
+      //child.rotation.y +=0.0008
+      //child.rotation.z +=0.0008
+      //child.rotation.x +=0.0008      }
+    else{(child.isLine)
+      child.rotation.y +=0.0006
+      child.rotation.z +=0.0006
+      child.rotation.x +=0.0006
+    }})
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
 }
+
 /**
 * Shows or hides the loading spinner
 */
