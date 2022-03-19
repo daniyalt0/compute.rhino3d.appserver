@@ -44,6 +44,7 @@ rhino3dm().then(async (m) => {
   init();
   compute();
 });
+downloadButton
 const downloadButton = document.getElementById("downloadButton")
 downloadButton.onclick = download
 /**
@@ -139,21 +140,6 @@ loader.parse(buffer, function (object) {
       scene.remove(child);
     }
   });
- /**
-  * This function is called when the download button is clicked
-  */
-function download () {
-  // write rhino doc to "blob"
-  const bytes = doc.toByteArray()
-  const blob = new Blob([bytes], {type: "application/octect-stream"})
-
-  // use "hidden link" trick to get the browser to download the blob
-  const filename = data.definition.replace(/\.gh$/, '') + '.3dm'
-  const link = document.createElement('a')
-  link.href = window.URL.createObjectURL(blob)
-  link.download = filename
-  link.click()
-}
 
   ///////////////////////////////////////////////////////////////////////
 
@@ -263,18 +249,18 @@ else document.getElementById("loader").style.display = "none";
    function animate() {
      scene.traverse(function(child){
        if (child.isMesh){
-         child.rotation.y +=0.0008
-         child.rotation.z +=0.0008
-         child.rotation.x +=0.0008
+         child.rotation.y +=0.0006
+         child.rotation.z +=0.0006
+         child.rotation.x +=0.0006
        }
        //else{(child.ispoint)
          //child.rotation.y +=0.0008
          //child.rotation.z +=0.0008
          //child.rotation.x +=0.0008      }
        else{(child.isLine)
-         child.rotation.y +=0.0008
-         child.rotation.z +=0.0008
-         child.rotation.x +=0.0008
+         child.rotation.y +=0.0006
+         child.rotation.z +=0.0006
+         child.rotation.x +=0.0006
        }})
      requestAnimationFrame(animate);
      renderer.render(scene, camera);
@@ -322,3 +308,18 @@ else document.getElementById("loader").style.display = "none";
    controls.update();
     }
  
+ /**
+  * This function is called when the download button is clicked
+  */
+ function download () {
+     // write rhino doc to "blob"
+     const bytes = doc.toByteArray()
+     const blob = new Blob([bytes], {type: "application/octect-stream"})
+ 
+     // use "hidden link" trick to get the browser to download the blob
+     const filename = data.definition.replace(/\.gh$/, '') + '.3dm'
+     const link = document.createElement('a')
+     link.href = window.URL.createObjectURL(blob)
+     link.download = filename
+     link.click()
+ }
