@@ -37,7 +37,7 @@ padding: 3%;
 
 
 .bar {
-     align-items:center; display:flex ;white-space:nowrap;
+     align-items:center ;white-space:nowrap;
      
     }
 .bar p {
@@ -61,7 +61,7 @@ padding: 3%;
               align-items:center;
               white-space:nowrap;
               align-items:center;
-              display:flex;
+              
               font-weight:600;
               color: rgb(12, 95, 95)  
 }
@@ -83,3 +83,8 @@ padding: 3%;
    color: rgb(49, 192, 180);
    background-color:rgb(255, 255, 255);
   }
+  #length1{ 
+    color: rgb(49, 192, 180);
+    background-color:rgb(255, 255, 255);
+   }
+ 
