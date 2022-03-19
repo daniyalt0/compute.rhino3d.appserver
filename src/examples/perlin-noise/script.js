@@ -11,7 +11,10 @@ const loader = new Rhino3dmLoader();
 loader.setLibraryPath("https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/");
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-const definition = "perlin_maze.gh";
+const data = {
+  definition: 'perlin_maze.gh',
+  inputs: getInputs()
+}
 
 let rhino, doc;
 rhino3dm().then(async (m) => {
