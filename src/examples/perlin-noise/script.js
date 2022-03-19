@@ -93,26 +93,6 @@ let scene, camera, renderer, controls
 
     animate();
   }
-  function animate() {
-    scene.traverse(function(child){
-      if (child.isMesh){
-        child.rotation.y +=0.0006
-        child.rotation.z +=0.0006
-        child.rotation.x +=0.0006
-      }
-      //else{(child.ispoint)
-        //child.rotation.y +=0.0008
-        //child.rotation.z +=0.0008
-        //child.rotation.x +=0.0008      }
-      else{(child.isLine)
-        child.rotation.y +=0.0006
-        child.rotation.z +=0.0006
-        child.rotation.x +=0.0006
-      }})
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-  }
-
 //////////////////////////////////////////////////////////////////////////////////////////////
 async function compute() {
   // construct url for GET /solve/definition.gh?name=value(&...)
