@@ -151,11 +151,16 @@ for (const path in values[i].InnerTree) {
 
           console.log(length)
         }
+
+        if (rhinoObject !== null) {
+          doc.objects().add(rhinoObject, null)
+        } 
+        
         if (values[i].ParamName == "RH_OUT:length1") {
           //length = JSON.parse(responseJson.values[i].InnerTree['{ 0; }'][0].data)
           length1 = Math.round(branch[j].data)
 
-          console.log(length)
+          console.log(length1)
         }
        
         if (rhinoObject !== null) {
@@ -169,7 +174,7 @@ for (const path in values[i].InnerTree) {
 document.getElementById('length').innerText = " Shortest Distance  = " + length + " m"
 
 //GET VALUES
-document.getElementById('length1').innerText = " Total Distance  = " + length + " m"
+document.getElementById('length1').innerText = " Total Distance  = " + length1 + " m"
  
 
 if (doc.objects().count < 1) {
