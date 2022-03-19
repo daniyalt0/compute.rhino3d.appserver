@@ -85,6 +85,8 @@ async function compute() {
     console.error(error);
   }
 }
+const downloadButton = document.getElementById("downloadButton")
+downloadButton.onclick = download
 /**
 * Parse response
 */
@@ -156,10 +158,10 @@ loader.parse(buffer, function (object) {
   // add object graph from rhino model to three.js scene
   scene.add(object);
 
-  // hide spinner and enable download button
-  showSpinner(false);
-  //downloadButton.disabled = false
-  // zoom to extents
+// hide spinner and enable download button
+showSpinner(false)
+downloadButton.disabled = false
+// zoom to extents
   zoomCameraToSelection(camera, controls, scene.children)
 });
 }
