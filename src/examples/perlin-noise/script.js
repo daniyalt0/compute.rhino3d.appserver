@@ -56,7 +56,7 @@ downloadButton.onclick = download
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // more globals
-let scene, camera, renderer, controls
+let scene, camera, renderer, controls, length;
  /**
   * Sets up the scene, camera, renderer, lights and controls and starts the animation
   */
@@ -119,39 +119,49 @@ async function compute() {
     console.error(error)
   }
 }
-
+console.log(data.inputs)
 /**
 * Parse response
 */
 function collectResults(responseJson) {
-const values = responseJson.values;
+  const values = responseJson.values;
 
-console.log(values);
-
-// clear doc
-try {
-  if (doc !== undefined) doc.delete();
-} catch {}
+  console.log(values);
+  // clear doc
+  if( doc !== undefined)
+  doc.delete()
 
 //console.log(values)
-doc = new rhino.File3dm();
-
+doc = new rhino.File3dm()
+console.log(values)
 // for each output (RH_OUT:*)...
-for (let i = 0; i < values.length; i++) {
-  // ...iterate through data tree structure...
-  for (const path in values[i].InnerTree) {
-    const branch = values[i].InnerTree[path];
-    // ...and for each branch...
-    for (let j = 0; j < branch.length; j++) {
-      // ...load rhino geometry into doc
-      const rhinoObject = decodeItem(branch[j]);
-      if (rhinoObject !== null) {
-        // console.log(rhinoObject)
-        doc.objects().add(rhinoObject, null);
+for ( let i = 0; i < values.length; i ++ ) {
+// ...iterate through data tree structure...
+for (const path in values[i].InnerTree) {
+  const branch = values[i].InnerTree[path]
+  // ...and for each branch...
+  for( let j = 0; j < branch.length; j ++) {
+    // ...load rhino geometry into doc
+    const rhinoObject = decodeItem(branch[j])
+
+         //GET VALUES
+        if (values[i].ParamName == "RH_OUT:length") {
+          //length = JSON.parse(responseJson.values[i].InnerTree['{ 0; }'][0].data)
+          length = Math.round(branch[j].data)
+
+          console.log(length)
+        }
+       
+        if (rhinoObject !== null) {
+          doc.objects().add(rhinoObject, null)
       }
     }
   }
 }
+
+//GET VALUES
+document.getElementById('length').innerText = "// Shortest Distance  = " + length + " m"
+ 
 
 if (doc.objects().count < 1) {
   console.error("No rhino objects to load!");
