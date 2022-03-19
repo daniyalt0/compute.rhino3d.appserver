@@ -20,7 +20,7 @@ rhino3dm().then(async (m) => {
   init();
   compute();
 });
-downloadButton
+//downloadButton
 const downloadButton = document.getElementById("downloadButton")
 downloadButton.onclick = download
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
