@@ -1,6 +1,6 @@
 
 .bar {
-     align-items:center ;white-space:nowrap;
+     align-items:center ; display:flex ;white-space:nowrap;
      
     }
 .bar p {
