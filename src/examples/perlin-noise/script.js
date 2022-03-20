@@ -129,33 +129,7 @@ const bulbGeometry = new THREE.SphereGeometry( 0.02, 16, 8 );
     // handle changes in the window size
     window.addEventListener( 'resize', onWindowResize, false )
 
-    const cameraH = 50;
-//change the camera z position
-camera.position.z = cameraH;
-//This library allows us to add event listener to our 3D objects, just like with HTML DOM nodes.
-const interactionManager = new InteractionManager(
-    renderer,
-    camera,
-    renderer.domElement
-  );
- 
-document.getElementById("view").addEventListener("click", () => {
-    // backup original rotation
-    var startRotation = camera.quaternion.clone();
-    // final rotation (with lookAt)
-    camera.lookAt( 0,0,0 );
-    camera.position.set(0,0,cameraH);
-    var endRotation = camera.quaternion.clone();
-    // revert to original rotation
-    camera.quaternion.copy( startRotation );
-    // Tween
-    var lookAtTween = new TWEEN.Tween( camera.quaternion ).to( endRotation, 600 )
-    .easing(TWEEN.Easing.Quadratic.Out)
-    .start();
     
-});
-
-animate();
 
     animate();
   }
