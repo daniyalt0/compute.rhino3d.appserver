@@ -18,7 +18,7 @@
                 <p>Geometry</p>
                 <div class="bar">
                   <label for="radius">radius</label>
-                  <input type="range" id="radius" min="1" max="50" value="35" oninput="rangeValue.innerText= this.value" step="1"class="slider">
+                  <input type="range" id="radius" min="20" max="70" value="35" oninput="rangeValue.innerText= this.value" step="1"class="slider">
                   <p id="rangeValue">35</p>
                 </div>
                 <div class="bar">
@@ -54,15 +54,21 @@
                   <input type="range" id="start" min="0" max="3000" value="1600" oninput="rangeValue6.innerText= this.value" step="1"class="slider">
                   <p id="rangeValue6">1600</p>
                 </div>
+                <p>Sun Path</p>
+                <div class="bar"> 
+                  <label for="sun">Sun Path </label>
+                  <input type="range" id="sun" min="0" max="100" value="34" oninput="rangeValue7.innerText= this.value" step="1"class="slider">
+                  <p id="rangeValue7">34</p>
+                </div>
                 <p>Path</p>
                 <div class="bar">
                   <label for="tube"> tube</label>
-                  <input type="range" id="tube" min="0" max="10" value="3"  oninput="rangeValue7.innerText= this.value"step="1" class="slider">
-                  <p id="rangeValue7">3</p>
+                  <input type="range" id="tube" min="0" max="10" value="3"  oninput="rangeValue8.innerText= this.value"step="1" class="slider">
+                  <p id="rangeValue8">3</p>
                 </div>
                 <p> Length</p>
-                
-                <div id="length" >  Shortest lenght </div>
+                <div id="len" > lenght of maze </div>
+                <div id="length" >lenght </div>
                 <p> Download</p>
                 <div><button id="downloadButton" disabled>Download</button></div>
                 </div>

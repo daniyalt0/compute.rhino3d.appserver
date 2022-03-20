@@ -56,7 +56,7 @@ downloadButton.onclick = download
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // more globals
-let scene, camera, renderer, controls, length;
+let scene, camera, renderer, controls, length, len;
  /**
   * Sets up the scene, camera, renderer, lights and controls and starts the animation
   */
@@ -148,9 +148,15 @@ for (const path in values[i].InnerTree) {
         if (values[i].ParamName == "RH_OUT:length") {
           //length = JSON.parse(responseJson.values[i].InnerTree['{ 0; }'][0].data)
           length = Math.round(branch[j].data)
-
+         
           console.log(length)
         }
+
+        if (values[i].ParamName == "RH_OUT:len") {
+          //length = JSON.parse(responseJson.values[i].InnerTree['{ 0; }'][0].data)
+          len = Math.round(branch[j].data)
+          console.log(len)
+        }  
 
         if (rhinoObject !== null) {
           doc.objects().add(rhinoObject, null)
@@ -162,9 +168,9 @@ for (const path in values[i].InnerTree) {
 
 //GET VALUES
 document.getElementById('length').innerText = " Shortest Distance  = " + length + " m"
-
+document.getElementById('len').innerText = " Total Distance  = " + len + " m"
 //GET VALUES
-//document.getElementById('length1').innerText = " Total Distance  = " + length1 + " m"
+
  
 
 if (doc.objects().count < 1) {
