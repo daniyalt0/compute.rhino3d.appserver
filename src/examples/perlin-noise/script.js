@@ -201,7 +201,7 @@ for (const path in values[i].InnerTree) {
 document.getElementById('length').innerText = " Shortest Distance  = " + length + " m"
 document.getElementById('len').innerText = " Total Distance  = " + len + " m"
 //GET VALUES
-
+"RH_OUT:line" 
  
 
 if (doc.objects().count < 1) {
@@ -315,18 +315,18 @@ function onSliderChange () {
  function animate() {
   scene.traverse(function(child){
     if (child.isMesh){
-      child.rotation.y +=0.0006
-      child.rotation.z +=0.0006
-      child.rotation.x +=0.0006
+      child.rotation.y +=0.0002
+      child.rotation.z +=0.0002
+      child.rotation.x +=0.0002
     }
     //else{(child.ispoint)
       //child.rotation.y +=0.0008
       //child.rotation.z +=0.0008
       //child.rotation.x +=0.0008      }
     else{(child.isLine)
-      child.rotation.y +=0.0006
-      child.rotation.z +=0.0006
-      child.rotation.x +=0.0006
+      child.rotation.y +=0.0002
+      child.rotation.z +=0.0002
+      child.rotation.x +=0.0002
     }})
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
