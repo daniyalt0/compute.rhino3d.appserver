@@ -3,6 +3,10 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.126.0/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/OrbitControls.js";
 import { Rhino3dmLoader } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/loaders/3DMLoader.js";
 import rhino3dm from "https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/rhino3dm.module.js";
+//This library allows us to add event listener to our 3D objects, just like with HTML DOM nodes.
+import { InteractionManager } from './build/three.interactive.js'
+// This library allows us to move the camera smoothly  
+import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 //import Stats from './jsm/libs/stats.module.js';
 //import { GUI } from './jsm/libs/lil-gui.module.min.js';
 
@@ -124,6 +128,34 @@ const bulbGeometry = new THREE.SphereGeometry( 0.02, 16, 8 );
 
     // handle changes in the window size
     window.addEventListener( 'resize', onWindowResize, false )
+
+    const cameraH = 50;
+//change the camera z position
+camera.position.z = cameraH;
+//This library allows us to add event listener to our 3D objects, just like with HTML DOM nodes.
+const interactionManager = new InteractionManager(
+    renderer,
+    camera,
+    renderer.domElement
+  );
+ 
+document.getElementById("view").addEventListener("click", () => {
+    // backup original rotation
+    var startRotation = camera.quaternion.clone();
+    // final rotation (with lookAt)
+    camera.lookAt( 0,0,0 );
+    camera.position.set(0,0,cameraH);
+    var endRotation = camera.quaternion.clone();
+    // revert to original rotation
+    camera.quaternion.copy( startRotation );
+    // Tween
+    var lookAtTween = new TWEEN.Tween( camera.quaternion ).to( endRotation, 600 )
+    .easing(TWEEN.Easing.Quadratic.Out)
+    .start();
+    
+});
+
+animate();
 
     animate();
   }

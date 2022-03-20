@@ -8,7 +8,8 @@ top: 5px;
 margin: 5px;
 padding: 5px;
 }
-#overlay {z-index: 1;      
+#overlay {z-index: 1;
+   font-family:helvetica;
     width: 10px;
     margin:4px; 
     width: 300px;
@@ -23,6 +24,7 @@ padding: 5px;
     border: 2px solid #f3f3f3; /* Light grey */
     border-top: 4px solid #222436; /* Grey */
     border-radius: 50%;
+    font-family:helvetica;
     width: 40px;
     height: 40px;
     animation:spin .5s linear infinite;
@@ -36,18 +38,22 @@ padding: 5px;
     100% { transform: rotate(360deg);}
      } 
 
-
+.bar1 { padding:2px;
+      ;font-family:helvetica;color: rgb(0, 96, 126); font-weight:600;font-family:helvetica;}
+      
+     
 .bar {
-     align-items:center; display:flex ;white-space:nowrap;
+     align-items:center; display:flex ;white-space:nowrap;font-family:helvetica;
      
     }
 .bar p {
         padding:2px;
      color: rgb(49, 192, 180); 
-     font-weight:600;}
+     font-weight:600;font-family:helvetica;}
 .slider {
         -webkit-appearance:none;
         width: 100%;
+        font-family:helvetica;
         height: 10px;
         background: rgb(224, 168, 130);
         outline: none;
@@ -59,6 +65,7 @@ padding: 5px;
   }
 
   .bar label {padding-right: 2px;
+              font-family:helvetica;
               align-items:center;
               white-space:nowrap;
               align-items:center;
@@ -82,12 +89,33 @@ padding: 5px;
 
 
 #length{ 
-   color: rgb(49, 192, 180);
+   color: rgb(49, 192, 180);font-family:helvetica;
    background-color:rgb(255, 255, 255);
   }
-  #len{ 
-    color: rgb(49, 192, 180);
+#len{ 
+    color: rgb(49, 192, 180);font-family:helvetica;
     background-color:rgb(255, 255, 255);
    }
+   
+  
+  
+  .btn{
+    padding-right: 20px;
+    padding: 10px;
+    font-size: 15px;
+    
+    border: line;
+    background-color: rgb(224, 168, 130);
+    font-family:helvetica;
+    font-weight:600;
+    color: rgb(255, 254, 254);
+    border-radius: 12px;
+  }
+  .btn:hover{
+    font-weight: bold;
+    cursor: cell;
+    background-color: rgb(53, 167, 175);
+    color: rgb(255, 254, 254);
+  }   
   
  

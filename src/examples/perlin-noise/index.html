@@ -15,62 +15,77 @@
                 <p>the generator  creates a labyrinth  based of 
                     hape then dispalys the shortest  parth between start
                     and end points </p>
+                <div class="bar1">    
                 <p>Geometry</p>
-                <div class="bar">
-                  <label for="radius">radius</label>
+				<div class="bar">
+                  <label for="radius">radius</label>&nbsp  &nbsp
                   <input type="range" id="radius" min="20" max="70" value="35" oninput="rangeValue.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue">35</p>
                 </div>
                 <div class="bar">
-                  <label for="ucount">u-count</label>
+                  <label for="ucount">u-count</label>&nbsp  &nbsp
                   <input type="range" id="ucount" min="1" max="30" value="17"  oninput="rangeValue1.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue1">17</p>
                 </div>
                 <div class="bar">
-                  <label for="vcount">v-count</label>
+                  <label for="vcount">v-count</label>&nbsp  &nbsp
                   <input type="range" id="vcount" min="1" max="30" value="22" oninput="rangeValue2.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue2">22</p>
                 </div>
+                <div class="bar1">
                 <p>Perlin Noise</p>
-                <div class="bar">
-                  <label for="time">time</label>
+				<div class="bar">
+                  <label for="time">time</label>&nbsp  &nbsp
                   <input type="range" id="time" min="0" max="10" value="4.77" oninput="rangeValue3.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue3">4.77</p>
                 </div>
                 <div class="bar">
-                  <label for="scale">scale</label>
+                  <label for="scale">scale</label>&nbsp  &nbsp
                   <input type="range" id="scale" min="0" max="10" value="6" oninput="rangeValue4.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue4">6</p>
                 </div>
+                <div class="bar1">
                 <p>Randomness</p>
-                <div class="bar">
-                  <label for="seed">seed</label>
+				<div class="bar">
+                  <label for="seed">seed</label>&nbsp  &nbsp
                   <input type="range" id="seed" min="0" max="100" value="18" oninput="rangeValue5.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue5">18</p>
                 </div>
+                <div class="bar1">
                 <p>Maze</p>
-                <div class="bar"> 
-                  <label for="start">start </label>
+				<div class="bar">
+                  <label for="start">start </label>&nbsp  &nbsp
                   <input type="range" id="start" min="0" max="3000" value="1227" oninput="rangeValue6.innerText= this.value" step="1"class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue6">1227</p>
                 </div>
-                <p>Sun Path</p>
-                <div class="bar"> 
-                  <label for="sun">Sun Path </label>
-                  <input type="range" id="sun" min="0" max="10" value="6" oninput="rangeValue7.innerText= this.value" step="1"class="slider">
-                  <p id="rangeValue7">6/p>
-                </div>
+                <div class="bar1">
                 <p>Path</p>
-                <div class="bar">
-                  <label for="tube"> tube</label>
+				<div class="bar">
+                  <label for="tube"> tube</label>&nbsp  &nbsp
                   <input type="range" id="tube" min="0" max="10" value="3"  oninput="rangeValue8.innerText= this.value"step="1" class="slider">
+				  &nbsp  &nbsp
                   <p id="rangeValue8">3</p>
                 </div>
-                <p> Length</p>
-                <div id="len" > lenght of maze </div>
+                <div class="bar1">
+                <p>Length</p>
+				</div>
+				<div class="bar">
+                <div id="len" > lenght of maze </div> &nbsp &nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp
                 <div id="length" >lenght </div>
-                <p> Download</p>
-                <div><button id="downloadButton" disabled>Download</button></div>
+				</div>
+                <div class="bar1">
+                <p>Other</p>
+				<div class="bar">
+                <button id="view" class="btn">View</button>
+				&nbsp &nbsp  &nbsp  &nbsp  &nbsp
+                <div><button id="downloadButton" class="btn"disabled>Download</button></div>
                 </div>
         </div>
 
