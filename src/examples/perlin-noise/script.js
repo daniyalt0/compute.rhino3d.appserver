@@ -116,7 +116,7 @@ const bulbGeometry = new THREE.SphereGeometry( 0.02, 16, 8 );
 
     // add a directional light
     const directionalLight = new THREE.DirectionalLight( 0xffffff )
-    directionalLight.intensity = 2
+    directionalLight.intensity = 3
     scene.add( directionalLight )
 
     const ambientLight = new THREE.AmbientLight()
