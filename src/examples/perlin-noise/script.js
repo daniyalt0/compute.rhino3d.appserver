@@ -3,8 +3,8 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.126.0/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/OrbitControls.js";
 import { Rhino3dmLoader } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/loaders/3DMLoader.js";
 import rhino3dm from "https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/rhino3dm.module.js";
-import Stats from './jsm/libs/stats.module.js';
-import { GUI } from './jsm/libs/lil-gui.module.min.js';
+//import Stats from './jsm/libs/stats.module.js';
+//import { GUI } from './jsm/libs/lil-gui.module.min.js';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,7 +26,7 @@ rhino3dm().then(async (m) => {
   compute();
 });
 
-let previousShadowMap = false;
+//let previousShadowMap = false;
 //downloadButton
 const downloadButton = document.getElementById("downloadButton")
 downloadButton.onclick = download
@@ -234,13 +234,13 @@ loader.parse(buffer, function (object) {
     }
   });
   // sunp
-  object.traverse((child) => {
+  /* object.traverse((child) => {
     if (child.isSunp) {
         const mat = new THREE.MeshToonMaterial( {color:rgb(194, 205, 35),roughness: 0.01 ,transparent: true, opacity: 0.80 } )
         child.material = mat;
               
     }
-  });
+  });*/
   //  crvs
   object.traverse((child) => {
     if (child.isLine) {
