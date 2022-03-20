@@ -3,13 +3,6 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.126.0/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/OrbitControls.js";
 import { Rhino3dmLoader } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/loaders/3DMLoader.js";
 import rhino3dm from "https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/rhino3dm.module.js";
-//This library allows us to add event listener to our 3D objects, just like with HTML DOM nodes.
-import { InteractionManager } from './build/three.interactive.js'
-// This library allows us to move the camera smoothly  
-import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
-//import Stats from './jsm/libs/stats.module.js';
-//import { GUI } from './jsm/libs/lil-gui.module.min.js';
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // set up loader for converting the results to threejs
