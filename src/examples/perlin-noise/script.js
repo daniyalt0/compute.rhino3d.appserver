@@ -3,8 +3,8 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.126.0/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/OrbitControls.js";
 import { Rhino3dmLoader } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/loaders/3DMLoader.js";
 import rhino3dm from "https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/rhino3dm.module.js";
-import Stats from './jsm/libs/stats.module.js';
-import { GUI } from './jsm/libs/lil-gui.module.min.js';
+//import Stats from './jsm/libs/stats.module.js';
+//import { GUI } from './jsm/libs/lil-gui.module.min.js';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +60,7 @@ downloadButton.onclick = download
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // more globals
-let scene, camera, renderer,length, len; //sunpos ,stats;
+let scene, camera, renderer, controls, length, len; //sunpos ,stats;
  /**
   * Sets up the scene, camera, renderer, lights and controls and starts the animation
   */
@@ -201,7 +201,7 @@ for (const path in values[i].InnerTree) {
 document.getElementById('length').innerText = " Shortest Distance  = " + length + " m"
 document.getElementById('len').innerText = " Total Distance  = " + len + " m"
 //GET VALUES
-"RH_OUT:line" 
+
  
 
 if (doc.objects().count < 1) {
@@ -342,152 +342,6 @@ function onSliderChange () {
  animate();
  }
  
- const param ={}
-tubeGeometry= document.getElementById("RH_OUT:line");
-container = document.getElementById( 'container' );
-
-// camera
-
-camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 10000 );
-camera.position.set( 0, 50, 500 );
-
-// scene
-
-scene = new THREE.Scene();
-scene.background = new THREE.Color( 0xf0f0f0 );
-
-// light
-
-const light = new THREE.DirectionalLight( 0xffffff );
-light.position.set( 0, 0, 1 );
-scene.add( light );
-
-// tube /path
-parent = new THREE.Object3D();
-scene.add( parent );
-
-splineCamera = new THREE.PerspectiveCamera( 84, window.innerWidth / window.innerHeight, 0.01, 1000 );
-parent.add( splineCamera );
-
-cameraHelper = new THREE.CameraHelper( splineCamera );
-scene.add( cameraHelper );
-
-// debug camera
-
-cameraEye = new THREE.Mesh( new THREE.SphereGeometry( 5 ), new THREE.MeshBasicMaterial( { color: 0xdddddd } ) );
-parent.add( cameraEye );
-
-cameraHelper.visible = params.cameraHelper;
-cameraEye.visible = params.cameraHelper;
-
-// stats
-
-stats = new Stats();
-container.appendChild( stats.dom );
-
-// dat.GUI
-
-const gui = new GUI( { width: 285 } );
-
-const folderCamera = gui.addFolder( 'Camera' );
-				folderCamera.add( params, 'animationView' ).onChange( function () {
-
-					animateCamera();
-
-				} );
-				folderCamera.add( params, 'lookAhead' ).onChange( function () {
-
-					animateCamera();
-
-				} );
-				folderCamera.add( params, 'cameraHelper' ).onChange( function () {
-
-					animateCamera();
-
-				} );
-				folderCamera.open();
-
-				const controls = new OrbitControls( camera, renderer.domElement );
-				controls.minDistance = 100;
-				controls.maxDistance = 2000;
-
-				window.addEventListener( 'resize', onWindowResize );
-
-			
-            /*function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
-
-			//
-
-			function animate() {
-
-				requestAnimationFrame( animate );
-
-				render();
-				stats.update();
-
-			}*/
-            // ti,e ,loop
-            function render() {
-
-				// animate camera along spline
-
-				const time = Date.now();
-				const looptime = 20 * 1000;
-				const t = ( time % looptime ) / looptime;
-                tubeGeometry.parameters.path.getPointAt( t, position );
-				position.multiplyScalar( params.scale );
-
-				// interpolation
-
-				const segments = tubeGeometry.tangents.length;
-				const pickt = t * segments;
-				const pick = Math.floor( pickt );
-				const pickNext = ( pick + 1 ) % segments;
-
-				binormal.subVectors( tubeGeometry.binormals[ pickNext ], tubeGeometry.binormals[ pick ] );
-				binormal.multiplyScalar( pickt - pick ).add( tubeGeometry.binormals[ pick ] );
-
-				tubeGeometry.parameters.path.getTangentAt( t, direction );
-				const offset = 15;
-
-				normal.copy( binormal ).cross( direction );
-
-				// we move on a offset on its binormal
-
-				position.add( normal.clone().multiplyScalar( offset ) );
-
-				splineCamera.position.copy( position );
-				cameraEye.position.copy( position );
-
-				// using arclength for stablization in look ahead
-
-				tubeGeometry.parameters.path.getPointAt( ( t + 30 / tubeGeometry.parameters.path.getLength() ) % 1, lookAt );
-				lookAt.multiplyScalar( params.scale );
-
-				// camera orientation 2 - up orientation via normal
-
-				if ( ! params.lookAhead ) lookAt.copy( position ).add( direction );
-				splineCamera.matrix.lookAt( splineCamera.position, lookAt, normal );
-				splineCamera.quaternion.setFromRotationMatrix( splineCamera.matrix );
-
-				cameraHelper.update();
-
-				renderer.render( scene, params.animationView === true ? splineCamera : camera );
-
-			}
-            
-
-            
-
-
-
  /**
   * Helper function that behaves like rhino's "zoom to selection", but for three.js!
   */
