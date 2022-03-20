@@ -3,6 +3,8 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.126.0/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/OrbitControls.js";
 import { Rhino3dmLoader } from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/loaders/3DMLoader.js";
 import rhino3dm from "https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/rhino3dm.module.js";
+import Stats from './jsm/libs/stats.module.js';
+import { GUI } from './jsm/libs/lil-gui.module.min.js';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,6 +25,8 @@ rhino3dm().then(async (m) => {
   init();
   compute();
 });
+
+let previousShadowMap = false;
 //downloadButton
 const downloadButton = document.getElementById("downloadButton")
 downloadButton.onclick = download
@@ -56,10 +60,37 @@ downloadButton.onclick = download
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // more globals
-let scene, camera, renderer, controls, length, len;
+let scene, camera, renderer, controls, length, len; //sunpos ,stats;
  /**
   * Sets up the scene, camera, renderer, lights and controls and starts the animation
   */
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////
+ //lighting //
+  /*const params = {
+  shadows: true,
+  exposure: 0.68,
+  Power: [110000* 4 ],
+};
+const bulbGeometry = new THREE.SphereGeometry( 0.02, 16, 8 );
+				bulbLight = new THREE.PointLight( 0xffee88, 1, 100, 2 );
+
+				bulbMat = new THREE.MeshStandardMaterial( {
+					emissive: 0xffffee,
+					emissiveIntensity: 1,
+					color: 0x000000
+				} );
+				bulbLight.add( new THREE.Mesh( bulbGeometry, bulbMat ) );
+				bulbLight.position.set( 0, 2, 0 );
+				bulbLight.castShadow = true;
+				scene.add( bulbLight );
+                  */
+  
+ ////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+ /////////////////////////////////////////////////////////////////////////////////////////////////////
+ // camera path// 
+ ///////////////////////////////////////////////////////////////////////////////////////////////
   function init() {
  
     // Rhino models are z-up, so set this as the default
@@ -193,8 +224,24 @@ loader.parse(buffer, function (object) {
   });
 
   ///////////////////////////////////////////////////////////////////////
-
-  // color crvs
+  // materials //
+  // brep
+   object.traverse((child) => {
+    if (child.isBrep) {
+        const mat = new THREE.MeshToonMaterial( {color:rgb(12, 95, 95),roughness: 0.01 ,transparent: true, opacity: 0.80 } )
+        child.material = mat;
+              
+    }
+  });
+  // sunp
+  object.traverse((child) => {
+    if (child.isSunp) {
+        const mat = new THREE.MeshToonMaterial( {color:rgb(194, 205, 35),roughness: 0.01 ,transparent: true, opacity: 0.80 } )
+        child.material = mat;
+              
+    }
+  });
+  //  crvs
   object.traverse((child) => {
     if (child.isLine) {
       if (child.userData.attributes.geometry.userStringCount > 0) {
