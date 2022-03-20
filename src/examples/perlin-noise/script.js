@@ -225,7 +225,93 @@ loader.parse(buffer, function (object) {
 
   ///////////////////////////////////////////////////////////////////////
   // materials //
-  // brep
+  object.traverse((child) => {
+    if (child.isMesh) {
+        const mat = new THREE.object.traverse((child) => {
+    if (child.isMesh) {
+        const mat = new THREE.MeshStandardMaterial( {color: (0x202020),roughness: 0.01 ,transparent: true, opacity: 0.50 } )
+        child.material = mat;
+              if (child.userData.attributes.geometry.userStringCount > 0) {
+                
+
+                //get color from userStrings
+                const colorData = child.userData.attributes.userStrings[0]
+                const col = colorData[1];
+
+                //convert color from userstring to THREE color and assign it
+                const threeColor = new THREE.Color("rgb(" + col + ")");
+                const mat = new THREE.LineBasicMaterial({ color: threeColor });
+                child.material = mat;
+              }
+    }
+  });
+
+  object.traverse((child) => {
+    if (child.isLine) {
+
+      if (child.userData.attributes.geometry.userStringCount > 0) {
+        
+        //get color from userStrings
+        const colorData = child.userData.attributes.userStrings[0]
+        const col = colorData[1];
+
+        //convert color from userstring to THREE color and assign it
+        const threeColor = new THREE.Color("rgb(" + col + ")");
+        const mat = new THREE.LineBasicMaterial({ color: threeColor });
+        child.material = mat;
+      }
+    }
+  });
+
+  object.traverse((child) => {
+    if (child.isBrep) {
+        const mat = new THREE.MeshStandardMaterial( {color: (0x000000),roughness: 0.01 ,transparent: true, opacity: 1 } )
+        child.material = mat;
+              
+    }
+  });( {color: (0x202020),roughness: 0.01 ,transparent: true, opacity: 0.50 } )
+        child.material = mat;
+              if (child.userData.attributes.geometry.userStringCount > 0) {
+                
+
+                //get color from userStrings
+                const colorData = child.userData.attributes.userStrings[0]
+                const col = colorData[1];
+
+                //convert color from userstring to THREE color and assign it
+                const threeColor = new THREE.Color("rgb(" + col + ")");
+                const mat = new THREE.LineBasicMaterial({ color: threeColor });
+                child.material = mat;
+              }
+    }
+  });
+
+  object.traverse((child) => {
+    if (child.isLine) {
+
+      if (child.userData.attributes.geometry.userStringCount > 0) {
+        
+        //get color from userStrings
+        const colorData = child.userData.attributes.userStrings[0]
+        const col = colorData[1];
+
+        //convert color from userstring to THREE color and assign it
+        const threeColor = new THREE.Color("rgb(" + col + ")");
+        const mat = new THREE.LineBasicMaterial({ color: threeColor });
+        child.material = mat;
+      }
+    }
+  });
+
+  object.traverse((child) => {
+    if (child.isBrep) {
+        const mat = new THREE.MeshStandardMaterial( {color: (0x000000),roughness: 0.01 ,transparent: true, opacity: 1 } )
+        child.material = mat;
+              
+    }
+  });
+
+  /*/ brep
    object.traverse((child) => {
     if (child.isBrep) {
         const mat = new THREE.MeshToonMaterial( {color:rgb(12, 95, 95),roughness: 0.01 ,transparent: true, opacity: 0.80 } )
@@ -240,7 +326,7 @@ loader.parse(buffer, function (object) {
         child.material = mat;
               
     }
-  });*/
+  });
   //  crvs
   object.traverse((child) => {
     if (child.isLine) {
@@ -252,7 +338,7 @@ loader.parse(buffer, function (object) {
         child.material = mat;
       }
     }
-  });
+  }); */
 
   ///////////////////////////////////////////////////////////////////////
   // add object graph from rhino model to three.js scene
