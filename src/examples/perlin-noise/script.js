@@ -57,7 +57,7 @@ downloadButton.onclick = download
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // more globals
-let scene, camera, renderer, controls, length, len; //sunpos ,stats;
+let scene, camera, renderer, length, len; //sunpos ,stats;
  /**
   * Sets up the scene, camera, renderer, lights and controls and starts the animation
   */
