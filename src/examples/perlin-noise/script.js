@@ -124,8 +124,8 @@ const bulbGeometry = new THREE.SphereGeometry( 0.02, 16, 8 );
 
     
 
-    animate();
-  }
+    animate();}
+  
 //////////////////////////////////////////////////////////////////////////////////////////////
 async function compute() {
   // construct url for GET /solve/definition.gh?name=value(&...)
