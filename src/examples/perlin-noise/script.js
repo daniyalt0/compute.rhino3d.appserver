@@ -198,8 +198,9 @@ for (const path in values[i].InnerTree) {
 
 //GET VALUES
 document.getElementById('length').innerText = " Shortest Distance  = " + length + " m"
-document.getElementById('len').innerText = " Total Distance  = " + len + " m"
 //GET VALUES
+document.getElementById('len').innerText = " Total Distance  = " + len + " m"
+
 
  
 
